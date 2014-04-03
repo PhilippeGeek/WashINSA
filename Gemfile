@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.0'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.4'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise'
-gem 'figaro'
+# gem 'figaro' # Unactivated due to a security warning
 gem 'rolify'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
