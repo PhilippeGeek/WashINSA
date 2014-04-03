@@ -1,0 +1,33 @@
+<div class="page-header">
+<h1 class="left">Bâtiment <%= current_user.building.name %> - <%= @start.to_date.to_s %></h1>
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+          <th style="width: 20px">H</th>
+          <% current_user.machines.each do |machine|%>
+            <th><%= machine.name %></th>
+          <% end %>
+        </tr>
+    </thead>
+    <tbody>
+        <% (7..23).each do |h| %>
+            <tr>
+              <td><%= h %></td>
+              <% current_user.machines.each do |machine| %>
+                  <td>
+                <% if machine.bookings.where(:start => @start + h.hours).first.nil? %>
+                    <%= link_to 'Réserver', new_booking_url({machine: machine.id, start: @start+h.hours}) %>
+                <% else %>
+                    <% booking = machine.bookings.where(:start => @start + h.hours).first %>
+                    <%= booking.user.name %>
+                        <% if booking.user == current_user and booking.start > Time.now %>
+                            <%= link_to('(Annuler)', booking, :method => :delete)  %>
+                        <% end %>
+                <%  end %>
+                   </td>
+            <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
