@@ -63,7 +63,7 @@ class BookingController < ApplicationController
     if params[:machine].nil?
       nil
     else
-      Machine.where(:id=> params[:machine]).first()
+      Machine.where(:id=> params[:machine]).first
     end
   end
 end
