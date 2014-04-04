@@ -28,7 +28,7 @@ if Rails.env == 'development' # Add test data for dev
   buildings_for_users = (1..5).to_a.shuffle![0..8]
   buildings_for_machines = (1..5).to_a.shuffle![0..7]
 
-  # Add user1 to user9 as demo users
+  # Add user1 to user9 as demo user
   for i in 1..9 do
     user=User.new(
         :name=>'user'+i.to_s,

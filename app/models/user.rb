@@ -17,4 +17,14 @@ class User < ActiveRecord::Base
   def self.max_bookings
     5
   end
+
+  def self.find_for_cas_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+    end
+  end
 end
