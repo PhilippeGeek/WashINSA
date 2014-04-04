@@ -12,6 +12,7 @@
 
 # bundler state
 /.bundle
+Gemfile.lock
 /vendor/bundle/
 /vendor/ruby/
 
