@@ -11,6 +11,7 @@ gem 'jbuilder', '2.0.5'
 gem 'bootstrap-sass', '3.1.1.0'
 gem 'cancan'
 gem 'devise','3.2.4'
+gem 'omniauth-cas', '1.0.4'
 # gem 'figaro' # Unactivated due to a security warning
 gem 'rolify', '3.4.0'
 gem 'simple_form'

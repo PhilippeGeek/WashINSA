@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124091850) do
+ActiveRecord::Schema.define(version: 20140404094959) do
 
   create_table "bookings", force: true do |t|
     t.integer  "machine_id"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20140124091850) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "building_id"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
