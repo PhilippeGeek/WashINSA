@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   belongs_to :building
   has_many :machines, :through => :building
   has_many :bookings
+
+  def can_book?
+    (bookings.where('start > ?',Time.now).count) < User.max_bookings
+  end
+
+  def self.max_bookings
+    5
+  end
 end

@@ -22,20 +22,24 @@ class BookingController < ApplicationController
 
   def new
     @start = Time.parse(params[:start])
-    if can? :book, get_machine and @start>Time.now
-      if (current_user.bookings.where("start > ?",Time.now).count) > 1
-        flash[:error] = 'Vous ne pouvez pas réserver plus de 2 crénaux'
-      else
+    if can? :book, get_machine and is_not_booking_in_past? @start
         Booking.create! :user=>current_user, :machine=> get_machine, :start=>params[:start], :end=>Time.parse(params[:start])+1.hours
-        flash[:notice] = "C'est réservé"
-      end
+        flash[:notice] = 'Tout est bon'
+    elsif !is_not_booking_in_past? @start
+      flash[:error] = 'On ne peut pas réserver dans le passé ! (by: Capitain Obvious)'
+    elsif !current_user.can_book?
+      flash[:error] = 'Vous ne pouvez pas réserver plus de '+User.max_bookings.to_s+' crénaux'
     else
-      flash[:error] = @start<=Time.now ? 'Réserver dans le passé, c\'est dur' : 'Vous ne pouvez pas réserver ici'
+      flash[:error] = 'Vous ne pouvez pas réserver cette machine (problème technique)'
     end
     redirect_to :booking_index
   end
 
   private
+
+  def is_not_booking_in_past?(time)
+    (Time.now - 1.hours) <= time
+  end
 
   def booking
     if params[:id].nil?

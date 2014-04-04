@@ -16,12 +16,14 @@
               <td><%= h %></td>
               <% current_user.machines.each do |machine| %>
                   <td>
-                <% if machine.bookings.where(:start => @start + h.hours).first.nil? %>
-                    <%= link_to 'Réserver', new_booking_url({machine: machine.id, start: @start+h.hours}) %>
-                <% else %>
-                    <% booking = machine.bookings.where(:start => @start + h.hours).first %>
-                    <%= booking.user.name %>
-                        <% if booking.user == current_user and booking.start > Time.now %>
+                    <% if machine.bookings.where(:start => @start + h.hours).first.nil? %>
+                        <% if can? :book, machine and (Time.now - 1.hours) <= ((@start + (h).hours))%>
+                            <%= link_to 'Réserver', new_booking_url({machine: machine.id, start: @start+h.hours}) %>
+                        <% end %>
+                    <% else %>
+                        <% booking = machine.bookings.where(:start => @start + h.hours).first %>
+                        <%= booking.user.name %>
+                        <% if booking.user == current_user and booking.start > (Time.now-1.hour) %>
                             <%= link_to('(Annuler)', booking, :method => :delete)  %>
                         <% end %>
                 <%  end %>

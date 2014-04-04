@@ -12,7 +12,7 @@ class Ability
       can :manage, Booking, :user => user
       can :read, Building
       can :book, Machine do |machine| # A User can not book a machine which is not owns
-        user.machines.include? machine
+        (user.machines.include?(machine) and user.can_book?) or user.has_role? :admin, machine
       end
     end
 
