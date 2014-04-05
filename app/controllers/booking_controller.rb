@@ -1,11 +1,10 @@
 class BookingController < ApplicationController
   before_filter :authenticate_user!
   def index
-    now = Time.now
     check_current_user!
-    defaults = {building:current_user.building_id,date:{year: now.year,month:now.month,day:now.day}}
-    params = (params.nil?) ? defaults : defaults.merge(params)
-    @start=Time.new(params[:date][:year],params[:date][:month],params[:date][:day])
+    defaults = {building:current_user.building_id,year: Time.now.year, month: Time.now.month, day:Time.now.day}
+    params.replace(defaults.merge(params))
+    @start=Time.new(params['year'].to_i,params['month'].to_i,params['day'].to_i,0,0,0)
     @building = Building.where(:id=>params[:building]).first
     @bookings = @building.bookings.on_day(@start)
     @machines = @building.machines

@@ -1,0 +1,21 @@
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'requis'
+      mark: '*'
+      html: '<abbr title="requis">**</abbr>'
+    error_notification:
+      default_message: "Merci de corriger les erreurs signalées:"
+    labels:
+      defaults:
+        country: "Votre pays de résidence"
+        building: "Code bâtiment"
+      address:
+        street_number: "N°"
+        building: "Code de votre bâtiment"
+    hints:
+      defaults:
+        building: 'Exemple: Bâtiment 2A'
+        street_number: 'Uniquement le numéro de rue'

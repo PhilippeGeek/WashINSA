@@ -12,10 +12,10 @@ module NavigationHelpers
       '/'
 
     when /the sign up page/
-      '/users/sign_up'
+      '/user/sign_up'
 
     when /the sign in page/
-      '/users/sign_in'
+      '/user/sign_in'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
