@@ -1,6 +1,8 @@
 class Building < ActiveRecord::Base
 
-  has_many :machines
-  has_many :bookings, :through => :machines
+  belongs_to :lauderette
+  has_many :machines, through: :lauderette
+  has_many :users
+  has_many :bookings, through: :users
 
 end
