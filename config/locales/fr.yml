@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
-  hello: "Hello world"
+  hello: "Bonjour"
+  activerecord:
+    models:
+      booking:
+        one: "Réservation"
+        other: "Réservations"
+    attributes:
+      booking:
+        start: "Début"
+        end: "Fin"
