@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
 
   belongs_to :building
-  has_many :machines, :through => :building
+  belongs_to :laundrette
+  has_many :machines, :through => :laundrette
   has_many :bookings
 
   def can_book?

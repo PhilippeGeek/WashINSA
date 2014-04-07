@@ -20,7 +20,7 @@ gem 'simple_form'
 gem 'therubyracer', '0.12.1', :platform=>:ruby
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', :require => true
   gem 'quiet_assets'
   gem 'rails_layout'
 end

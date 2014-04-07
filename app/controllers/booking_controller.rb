@@ -1,13 +1,13 @@
 class BookingController < ApplicationController
   before_filter :authenticate_user!
   def index
-    check_current_user!
+    unless check_current_user!
+      redirect_to edit_registration_path(current_user)
+      return
+    end
     defaults = {building:current_user.building_id,year: Time.now.year, month: Time.now.month, day:Time.now.day}
     params.replace(defaults.merge(params))
     @start=Time.new(params['year'].to_i,params['month'].to_i,params['day'].to_i,0,0,0)
-    @building = Building.where(:id=>params[:building]).first
-    @bookings = @building.bookings.on_day(@start)
-    @machines = @building.machines
   end
 
   def destroy
@@ -49,13 +49,7 @@ class BookingController < ApplicationController
   end
 
   def check_current_user!
-    if current_user.building.nil?
-      current_user.building = Building.all.first
-      current_user.save!
-    end
-    if current_user.building.machines.count == 0
-      current_user.building.machines << Machine.all.first
-    end
+    !current_user.building.nil? and !current_user.laundrette.nil? and current_user.machines.count == 0
   end
 
   def get_machine
