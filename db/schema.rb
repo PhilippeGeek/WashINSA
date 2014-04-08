@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406123203) do
+ActiveRecord::Schema.define(version: 20140408074225) do
 
   create_table "bookings", force: true do |t|
     t.integer  "machine_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20140406123203) do
     t.integer  "building_id"
     t.string   "provider"
     t.string   "uid"
+    t.integer  "laundrette_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

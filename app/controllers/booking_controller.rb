@@ -49,7 +49,7 @@ class BookingController < ApplicationController
   end
 
   def check_current_user!
-    !current_user.building.nil? and !current_user.laundrette.nil? and current_user.machines.count == 0
+    true
   end
 
   def get_machine
