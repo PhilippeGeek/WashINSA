@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   belongs_to :building
   belongs_to :laundrette
+  belongs_to :room
   has_many :machines, :through => :laundrette
   has_many :bookings
 

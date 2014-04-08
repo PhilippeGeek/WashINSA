@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <label for="room">Chambre</label>
-          <input type="text" class="form-control" id="room" placeholder="n° chambre">
+          <input type="text" class="form-control" id="room" name="room" placeholder="n° chambre"<%== ' value="'+@user.room.number.to_s+'"' unless @user.room.nil? %>>
         </div>
         <div class="form-group">
           <label for="laundrette_id">Laverie préféré</label>
