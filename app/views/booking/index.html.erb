@@ -1,5 +1,5 @@
 <div class="clearfix">
-    <div class="pull-left"><h2><%= current_user.building.name %></h2></div>
+    <div class="pull-left"><h2><%= current_user.laundrette.name %></h2></div>
     <div class="btn-group pull-right">
         <%= link_to '<', bookings_on_url(:day=>(@start-1.day).day,:year=>(@start-1.day).year,:month=>(@start-1.day).month), {class: %w(btn btn-primary)} %>
         <div class="btn btn-primary"><%= I18n.localize @start.to_date, :format =>  '%A %d %B %Y'%></div>

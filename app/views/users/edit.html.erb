@@ -1,0 +1,32 @@
+<%= form_for @user, url: user_path(@user), method: :patch, html: {class: "nifty_form"} do |f| %>
+    <div class="panel panel-default">
+      <div class="clearfix panel-heading">
+        <h3 class="large pull-left">Mon compte</h3>
+        <div class="btn-group pull-right">
+            <button type="submit" class="btn btn-default">Enregistrer</button>
+            <button type="submit" name="go_book" class="btn btn-primary">Enregistrer et aller réserver</button>
+          </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class=" clearfix panel-body">
+        <% @user.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger"><strong>Erreur : </strong><%= msg %></div>
+        <% end if @user.errors.any? %>
+        <% @errors.each do |error| %>
+            <div class="alert alert-danger"><strong>Erreur : </strong><%= error %></div>
+        <% end unless @errors.nil? %>
+        <div class="form-group">
+          <label for="building_id">Batiment</label>
+          <%= collection_select(:building, :id, Building.all, :id, :name, {selected: @user.building.id}, {class: %w{select2-box form-control}}) %>
+        </div>
+        <div class="form-group">
+          <label for="room">Chambre</label>
+          <input type="text" class="form-control" id="room" name="room" placeholder="n° chambre"<%== ' value="'+@user.room.number.to_s+'"' unless @user.room.nil? %>>
+        </div>
+        <div class="form-group">
+          <label for="laundrette_id">Laverie préféré</label>
+          <%= collection_select(:laundrette, :id, Laundrette.all, :id, :name, {selected: @user.laundrette.id}, {class: %w{select2-box form-control}}) %>
+        </div>
+      </div>
+    </div>
+<% end %>

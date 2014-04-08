@@ -9,6 +9,11 @@
 # See http://railsapps.github.io/rails-environment-variables.html
 
 if Rails.env == 'development' # Add test data for dev
-  puts 'Demo data'
-
+  laundrette=Laundrette.create! name: 'Laverie du B', opened:true,description:'',notes:''
+  5.times do |n|
+    Machine.create! name: "Machine #{n}", laundrette_id:laundrette.id
+  end
+  Machine.create! name: 'Sèche linge'
+  Building.create! name:'Batiment A', laundrette_id:laundrette.id
+  Building.create! name:'Batiment B', laundrette_id:laundrette.id
 end

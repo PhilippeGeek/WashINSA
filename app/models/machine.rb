@@ -1,8 +1,8 @@
 class Machine < ActiveRecord::Base
 
-  belongs_to :lauderette
-  has_many :buildings, through: :lauderette
+  belongs_to :laundrette
+  has_many :users, through: :laundrette
+  has_many :buildings, through: :laundrette
   has_many :bookings
-  has_many :users, through: :lauderette
 
 end

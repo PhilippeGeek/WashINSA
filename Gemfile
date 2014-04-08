@@ -4,11 +4,12 @@ gem 'rails', '4.0.4'
 gem 'i18n', '0.6.9'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'sqlite3', '1.3.9'
-gem 'sass-rails', '>= 4.0.2'
+gem 'sass-rails', '4.0.3'
+gem 'select2-rails', '3.5.4'
 gem 'uglifier', '2.5.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '3.1.0'
-gem 'turbolinks', '2.2.1'
+gem 'turbolinks', '2.2.2'
 gem 'jbuilder', '2.0.5'
 gem 'bootstrap-sass', '3.1.1.0'
 gem 'cancan'
@@ -20,7 +21,7 @@ gem 'simple_form'
 gem 'therubyracer', '0.12.1', :platform=>:ruby
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', :require => true
   gem 'quiet_assets'
   gem 'rails_layout'
 end

@@ -7,6 +7,7 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
+      can :manage, User, :id => user.id
       can :read, Machine
       can :read, Booking
       can :manage, Booking, :user => user

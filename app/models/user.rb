@@ -7,12 +7,13 @@ class User < ActiveRecord::Base
 
 
   belongs_to :building
-  belongs_to :lauderette
-  has_many :machines, :through => :lauderette
+  belongs_to :laundrette
+  belongs_to :room
+  has_many :machines, :through => :laundrette
   has_many :bookings
 
   def can_book?
-    (bookings.where('start > ?',Time.now).count) < User.max_bookings
+    (bookings.where('start > ?',Time.now-1.hour).count) < User.max_bookings
   end
 
   def self.max_bookings
@@ -20,11 +21,13 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_cas_oauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.extra.email
-      user.name = auth.extra[:displayName]   # assuming the user model has a name
-    end
+    user=User.new
+    user.provider = auth.provider
+    user.uid = auth.uid
+    user.email = auth.extra['mail']
+    user.building_id = Building.all.first.id
+    user.laundrette_id = Laundrette.all.first.id
+    user.name = auth.extra[:displayName]   # assuming the user model has a name
+    where(auth.slice(:provider, :uid)).first || user
   end
 end

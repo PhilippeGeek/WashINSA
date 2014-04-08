@@ -19,6 +19,7 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
         <ul class="dropdown-menu">
+          <li><%= link_to 'Mon compte', edit_user_url(current_user) %></li>
           <li><%= link_to 'Log out', destroy_session_url(current_user), :method => :delete %></li>
         </ul>
       </li>

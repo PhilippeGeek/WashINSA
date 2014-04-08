@@ -2,5 +2,9 @@
 
 FactoryGirl.define do
   factory :laundrette do
+    name "MyString"
+    notes "MyText"
+    description "MyText"
+    opened false
   end
 end
