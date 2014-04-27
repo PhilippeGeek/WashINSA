@@ -19,6 +19,10 @@ gem 'omniauth-cas', '1.0.4'
 gem 'rolify', '3.4.0'
 gem 'simple_form'
 gem 'therubyracer', '0.12.1', :platform=>:ruby
+
+# ActiveAdmin
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :require => true

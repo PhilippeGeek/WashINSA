@@ -1,4 +1,5 @@
 WashINSA::Application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => 'home#index'
   devise_for :user,
              path: '',
@@ -7,6 +8,7 @@ WashINSA::Application.routes.draw do
                  :registrations => 'registrations',
                  :omniauth_callbacks => "user/omniauth_callbacks"
              }
+  get 'logout' => 'home#logout'
   resources :users
   resources :booking do
     get 'ask' => 'booking#ask_for'

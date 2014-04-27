@@ -6,4 +6,8 @@ class HomeController < ApplicationController
       redirect_to :booking_index
     end
   end
+
+  def logout
+    sign_out_and_redirect(current_user)
+  end
 end

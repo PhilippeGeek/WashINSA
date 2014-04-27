@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  def unauthorized_action(arg)
+    redirect_to root_path
+  end
+
 end

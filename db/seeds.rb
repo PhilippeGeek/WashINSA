@@ -8,6 +8,9 @@
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
 
+admin = User.create!(name: 'Admin', email: 'admin@example.com', password: '123456', password_confirmation: '123456')
+admin.add_role :admin
+
 if Rails.env == 'development' # Add test data for dev
   laundrette=Laundrette.create! name: 'Laverie du B', opened:true,description:'',notes:''
   5.times do |n|
