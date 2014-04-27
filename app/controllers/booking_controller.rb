@@ -1,7 +1,10 @@
 class BookingController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :user
+
   def index
     unless check_current_user!
+      flash[:error] = "Enregistrer votre profil avant d'essayer de réserver"
       redirect_to edit_registration_path(current_user)
       return
     end
@@ -49,7 +52,11 @@ class BookingController < ApplicationController
   end
 
   def check_current_user!
-    true
+    @user.laundrette_id != nil && @user.room_id != nil
+  end
+
+  def user
+    @user = current_user
   end
 
   def get_machine
