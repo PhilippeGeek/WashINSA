@@ -26,7 +26,41 @@ fr:
       booking:
         one: "Réservation"
         other: "Réservations"
+      laundrette:
+        one: Laverie
+        other: Laveries
+      building:
+        one: Batiment
+        other: Batiments
+      machine:
+        one: Machine
+        other: Machines
+      room:
+        one: Chambre
+        other: Chambres
+      user:
+        one: Utilisateur
+        other: Utilisateurs
     attributes:
       booking:
         start: "Début"
         end: "Fin"
+      user:
+        name: Nom
+        email: Email
+        provider: "Fournisseur d'identité"
+        uid: Identifiant
+      laundrette:
+        name: Nom
+        notes: Informations
+        description: Description
+        opened: Ouverte
+      building:
+        name: Nom
+      room:
+        number: Numéro
+      machine:
+        nom: Nom
+        blocked: En panne
+        laundrette: Laverie
+        laundrette_id: ID de la laverie

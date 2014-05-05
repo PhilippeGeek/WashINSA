@@ -16,4 +16,3 @@
 //= require bootstrap
 //= require select2
 //= require select2_locale_fr
-//= require_tree .
